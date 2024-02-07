@@ -2,7 +2,7 @@
   "name": "brainbuddy-front",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.tsx",
+  "main": "index.tsx",
   "proxy": "http://localhost:8000",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,12 +23,20 @@
     ]
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.8",
+    "@mui/material": "^5.15.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@types/react": "^18.2.53",
-    "@types/react-dom": "^18.2.18"
+    "@types/react-dom": "^18.2.18",
+    "install": "^0.13.0",
+    "npm": "^10.4.0",
+    "react-router-dom": "^6.22.0"
   }
 }
