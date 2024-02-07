@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-const CustomButton = (props: any) => {
+const AnswerButton = (props: any) => {
   return (
-    <StyledButton onClick={props.onClick} disabled={props.disabled}>
+    <StyledButton onClick={props.onClick} disabled={props.disabled} name={props.name}>
       {props.buttonText}
     </StyledButton>
   );
 };
 
+
+
 const StyledButton = styled.button`
-max-width: 70%;
-min-width: 70%;
 box-sizing: border-box;
 height: 60px;
 color: #685bda;
@@ -27,4 +27,4 @@ margin: 20px;
   transition: 0.2s;
 }`
 
-export default CustomButton;
+export default AnswerButton;

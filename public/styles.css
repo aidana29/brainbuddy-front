@@ -39,3 +39,21 @@ h3 {
   text-align: left;
   padding-left: 10px;
 }
+
+img.avatar {
+  height: 100px;
+  text-align: center;
+}
+
+label.signup {
+  align-self: flex-start;
+  color: white;
+  font-size: 18px;
+  padding: 5px 0;
+}
+
+p.theme {
+  color: #685bda;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}

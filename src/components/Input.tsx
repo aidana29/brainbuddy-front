@@ -10,8 +10,8 @@ const InputField = (props: any) => {
 const StyledInput = styled.input `
 width: 100%;
 padding: 5px 20px;
-height: 70px;
 color: white;
+height: 70px;
 border: none;
 border-radius: 10px;
 margin-bottom: 10px;
@@ -20,6 +20,7 @@ font-size: 16px;
 background-color: #8077cb;
 &::placeholder {
     color: white;
+    opacity: 70%;
 }
 &:focus {
     border: solid 1px white;

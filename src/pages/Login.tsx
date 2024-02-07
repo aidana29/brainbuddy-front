@@ -18,6 +18,15 @@ const Login: React.FC = () => {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
+  const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+
+  //Minimum 3 characters, at least one letter and one number:
+  const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{3,}$/;
+  const isEmailValid = emailRegex.test(userInfo.email);
+  const isPwValid = pwRegex.test(userInfo.password);
+
+  const isValidCheck = isEmailValid && isPwValid;
+
   const handleLogin = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     fetch("http://localhost:8000/users/", {
@@ -33,16 +42,17 @@ const Login: React.FC = () => {
       .then((response) => {
         return response.json();
       })
-      .then((result) => {
-        if (result.message === "LOGIN_SUCCESS") {
-          localStorage.setItem("token", result.token);
-          navigate("/")
-        } else if (result.message === "WRONG_PASSWORD") {
-          alert("Wrong password")
-        } else if (result.message === "NOT_REGISTERED") {
-          alert("Seems like you are not registered!")
+      .then((responseData) => {
+        if (responseData.message === "LOGIN_SUCCESS") {
+          localStorage.setItem("token", responseData.token);
+          localStorage.setItem("nickname", responseData.nickname);
+          navigate("/main");
+        } else if (responseData.message === "WRONG_PASSWORD") {
+          alert("Wrong password");
+        } else if (responseData.message === "NOT_REGISTERED") {
+          alert("Seems like you are not registered!");
         } else {
-          alert("Oops smth went wrong")
+          alert("Oops smth went wrong");
         }
       });
   };
@@ -50,20 +60,26 @@ const Login: React.FC = () => {
   return (
     <CustomContainer>
       <CenteredContainer>
-      <div className="inputWrap" onChange={handleUserInfo}>
-      <h1 style={{marginBottom: "50px"}}>Get Ready to Train Your Brain!</h1>
-          <InputField type="email" name="email" placeholder="Email"/>
-          <InputField type="password" name="password" placeholder="Password"/>
+        <div className="inputWrap" onChange={handleUserInfo}>
+          <h1 style={{ marginBottom: "50px" }}>
+            Get Ready to Train Your Brain!
+          </h1>
+          <InputField type="email" name="email" placeholder="Email" />
+          <InputField type="password" name="password" placeholder="Password" />
           {/* <a href="#" className="link password">
             Forgot Password?
           </a> */}
-        <CustomButton buttonText="Login" onClick={handleLogin}/>
-        <a href="/signUp" className="link new">
-          Don't have an account?
-        </a>
-      </div>
+          <CustomButton
+            buttonText="Login"
+            onClick={handleLogin}
+            disabled={!isValidCheck}
+          />
+          <a href="/signUp" className="link new">
+            Don't have an account?
+          </a>
+        </div>
       </CenteredContainer>
-      </CustomContainer>
+    </CustomContainer>
   );
 };
 
