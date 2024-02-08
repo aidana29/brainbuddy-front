@@ -4,6 +4,7 @@ import CustomButton from "../components/Button";
 import CustomContainer from "../components/PurpleContainer";
 import CenteredContainer from "../components/CenteredContainer";
 import InputField from "../components/Input";
+import EC2 from "../config";
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const SignUp: React.FC = () => {
 
   const handleSignUp = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
-    fetch("http://localhost:8000/users/register", {
+    fetch(`${EC2}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

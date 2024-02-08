@@ -5,6 +5,7 @@ import AnswerButton from "../components/AnswerButton";
 import CustomContainer from "../components/PurpleContainer";
 import Fab from "@mui/material/Fab";
 import LogoutIcon from "@mui/icons-material/Logout";
+import EC2 from "../config";
 
 interface IQuestion {
   id: string;
@@ -37,7 +38,7 @@ const Main: React.FC = () => {
   const getQuestion = () => {
     setAnsweredRight(false);
     setAnswered(false);
-    fetch("http://localhost:8000/main/", {
+    fetch(`${EC2}/main/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -76,7 +77,7 @@ const Main: React.FC = () => {
     const answer = e.target.name;
     setAnswered(true);
     answer === "right" && handleRightAnswer();
-    fetch("http://localhost:8000/main/answered", {
+    fetch(`${EC2}/main/answered`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
