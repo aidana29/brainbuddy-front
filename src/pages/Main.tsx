@@ -2,29 +2,26 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import AnswerButton from "../components/AnswerButton";
-// import CustomButton from "../components/Button";
 import CustomContainer from "../components/PurpleContainer";
 import Fab from "@mui/material/Fab";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-// import CenteredContainer from "../components/CenteredContainer";
+interface IQuestion {
+  id: string;
+  theme: string;
+  question: string;
+  answer: string;
+  option1: string;
+  option2: string;
+  option3: string;
+  background: string;
+}
 
 const Main: React.FC = () => {
   const navigate = useNavigate();
-  const token: string = localStorage.getItem("token")! 
-
-  interface IQuestion {
-    id: string;
-    theme: string;
-    question: string;
-    answer: string;
-    option1: string;
-    option2: string;
-    option3: string;
-    background: string;
-  }
-
+  const token: string = localStorage.getItem("token")!;
   const nickname = localStorage.getItem("nickname");
+
   const [questionData, setQuestionData] = useState<IQuestion>({
     id: "",
     theme: "",
@@ -35,16 +32,16 @@ const Main: React.FC = () => {
     option3: "",
     background: "",
   });
+  const [answered, setAnswered] = useState(false);
 
   const getQuestion = () => {
-    // e.preventDefault();
     setAnswered(false);
     fetch("http://localhost:8000/main/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
         authorization: token,
-      }
+      },
     })
       .then((response) => {
         return response.json();
@@ -52,7 +49,7 @@ const Main: React.FC = () => {
       .then((responseData) => {
         if (responseData.message === "QUESTION_SENT") {
           setQuestionData(responseData.data);
-          console.log(responseData.data)
+          console.log(responseData.data);
         } else {
           alert("Oops smth went wrong");
         }
@@ -66,7 +63,6 @@ const Main: React.FC = () => {
   const { id, theme, question, answer, option1, option2, option3, background } =
     questionData;
 
-  const [answered, setAnswered] = useState(false);
   const [answeredRight, setAnsweredRight] = useState(false);
 
   function handleClick(e: React.ChangeEvent<any>) {
@@ -85,7 +81,7 @@ const Main: React.FC = () => {
       }),
     }).then((response) => {
       return response.json();
-    })
+    });
   }
 
   function handleRightAnswer() {

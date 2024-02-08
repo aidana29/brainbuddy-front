@@ -6,12 +6,12 @@ import CustomContainer from "../components/PurpleContainer";
 import CenteredContainer from "../components/CenteredContainer";
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
-
-  const navigate = useNavigate();
 
   const handleUserInfo = (e: React.ChangeEvent<any>) => {
     const { name, value } = e.target;
@@ -19,12 +19,9 @@ const Login: React.FC = () => {
   };
 
   const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
-
-  //Minimum 3 characters, at least one letter and one number:
   const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{3,}$/;
   const isEmailValid = emailRegex.test(userInfo.email);
   const isPwValid = pwRegex.test(userInfo.password);
-
   const isValidCheck = isEmailValid && isPwValid;
 
   const handleLogin = (e: React.ChangeEvent<any>) => {
@@ -66,9 +63,6 @@ const Login: React.FC = () => {
           </h1>
           <InputField type="email" name="email" placeholder="Email" />
           <InputField type="password" name="password" placeholder="Password" />
-          {/* <a href="#" className="link password">
-            Forgot Password?
-          </a> */}
           <CustomButton
             buttonText="Login"
             onClick={handleLogin}

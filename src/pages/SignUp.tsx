@@ -6,6 +6,8 @@ import CenteredContainer from "../components/CenteredContainer";
 import InputField from "../components/Input";
 
 const SignUp: React.FC = () => {
+  const navigate = useNavigate();
+
   const [userInfo, setUserInfo] = useState({
     email: "",
     nickname: "",
@@ -13,22 +15,19 @@ const SignUp: React.FC = () => {
     passwordCheck: "",
   });
 
-  const navigate = useNavigate();
-
   const handleUserInfo = (e: React.ChangeEvent<any>) => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
   };
 
+  //Email has to include @ and a dot
   const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
-
   //Minimum 3 characters, at least one letter and one number:
   const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{3,}$/;
   const isEmailValid = emailRegex.test(userInfo.email);
   const isPwValid = pwRegex.test(userInfo.password);
   const isPwChkValid = userInfo.password === userInfo.passwordCheck;
   const isNicknameValid = userInfo.nickname.length > 1;
-
   const isValidCheck =
     isEmailValid && isPwValid && isPwChkValid && isNicknameValid;
 
