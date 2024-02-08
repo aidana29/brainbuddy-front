@@ -4,15 +4,19 @@ import Login from "./pages/Login"
 import Welcome from "./pages/Welcome"
 import SignUp from "./pages/SignUp"
 import Main from "./pages/Main"
+import PrivateRoutes from "./components/PrivateRoutes"
 
 function Router() {
+
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Welcome />}/>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signUp" element={<SignUp />}></Route>
-        <Route path="/main" element={<Main />}></Route>
+      <Route path="/" element={<Welcome />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route element={<PrivateRoutes />}>
+        <Route path="/main" element={<Main />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )
