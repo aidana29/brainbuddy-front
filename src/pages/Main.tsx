@@ -35,6 +35,7 @@ const Main: React.FC = () => {
   const [answered, setAnswered] = useState(false);
 
   const getQuestion = () => {
+    setAnsweredRight(false);
     setAnswered(false);
     fetch("http://localhost:8000/main/", {
       method: "GET",
@@ -62,6 +63,12 @@ const Main: React.FC = () => {
 
   const { id, theme, question, answer, option1, option2, option3, background } =
     questionData;
+  const answerArray = [
+    { name: "right", answer: answer },
+    { name: "wrong", answer: option1 },
+    { name: "wrong", answer: option2 },
+    { name: "wrong", answer: option3 },
+  ];
 
   const [answeredRight, setAnsweredRight] = useState(false);
 
@@ -94,6 +101,18 @@ const Main: React.FC = () => {
     navigate("/");
   }
 
+  const shuffleArray = (myArray: any) => {
+    for (let i = myArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = myArray[i];
+      myArray[i] = myArray[j];
+      myArray[j] = temp;
+    }
+    return myArray;
+  };
+
+  const shuffledAnswers = shuffleArray(answerArray);
+
   return (
     <CustomContainer>
       <ProfileContainer>
@@ -114,27 +133,15 @@ const Main: React.FC = () => {
         <p className="theme">{theme}</p>
         <p className="question">{question}</p>
         <ButtonWrap>
-          <AnswerButton
-            buttonText={answer}
-            name="right"
-            onClick={handleClick}
-          />
-          <AnswerButton
-            buttonText={option1}
-            name="wrong"
-            onClick={handleClick}
-          />
-          <AnswerButton
-            buttonText={option2}
-            name="wrong"
-            onClick={handleClick}
-          />
-          <AnswerButton
-            buttonText={option3}
-            name="wrong"
-            onClick={handleClick}
-          />
-          {/* <h1> {background}</h1> */}
+          {shuffledAnswers.map((answer: { name: ""; answer: "" }) => {
+            return (
+              <AnswerButton
+                buttonText={answer.answer}
+                name={answer.name}
+                onClick={handleClick}
+              />
+            );
+          })}
         </ButtonWrap>
       </QuestionWrap>
       <AnswerWrap style={{ display: answered ? "flex" : "none" }}>
