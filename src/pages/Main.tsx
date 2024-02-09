@@ -192,9 +192,9 @@ const QuestionWrap = styled.div`
   box-sizing: border-box;
   text-align: center;
   @media (max-width: 700px) {
-    padding: 20px;
-    max-height: 600px;
-    min-height: 600px;
+    padding: 10px;
+    max-height: 450px;
+    min-height: 450px;
     margin: 10px 0;
   }
 `;

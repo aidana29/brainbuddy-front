@@ -55,6 +55,10 @@ const Login: React.FC = () => {
       });
   };
 
+  const handleSignUp = () => {
+    navigate("/signUp")
+  }
+
   return (
     <CustomContainer>
       <CenteredContainer>
@@ -69,7 +73,7 @@ const Login: React.FC = () => {
             onClick={handleLogin}
             disabled={!isValidCheck}
           />
-          <a href="/signUp" className="link new">
+          <a className="link new" onClick={handleSignUp}>
             Don't have an account?
           </a>
         </div>

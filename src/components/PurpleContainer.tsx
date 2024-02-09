@@ -13,6 +13,8 @@ export const CustomContainer = styled.div`
   @media (max-width: 700px) {
     justify-content: center;
     height: 100vh;
+    max-width: 80%;
+    min-width: 80%;
   }
 `;
 
