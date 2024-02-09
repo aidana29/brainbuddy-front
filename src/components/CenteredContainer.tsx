@@ -5,6 +5,8 @@ export const CenteredContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  width: 100%;
 `;
 
 export default CenteredContainer;

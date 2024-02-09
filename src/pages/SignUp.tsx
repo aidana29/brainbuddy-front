@@ -80,7 +80,7 @@ const SignUp: React.FC = () => {
           <InputField
             type="password"
             name="password"
-            placeholder="Minimum 3 characters, at least one letter and one number"
+            placeholder="At least 3 characters, one letter and one number"
           />
           <InputField
             type="password"

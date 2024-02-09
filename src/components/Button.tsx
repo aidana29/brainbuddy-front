@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   color: #685bda;
   border-radius: 40px;
   border: none;
-  font-size: 20px;
+  font-size: 1.2rem;
   cursor: pointer;
   margin: 20px;
   &:hover {
@@ -25,6 +25,12 @@ const StyledButton = styled.button`
     border: solid 2px white;
     color: white;
     transition: 0.2s;
+  }
+  @media (max-width: 700px) {
+    max-width: 60%;
+    min-width: 60%;
+    height: 50px;
+    margin: 10px;
   }
 `;
 

@@ -119,9 +119,7 @@ const Main: React.FC = () => {
       <ProfileContainer>
         <ProfileWrap>
           <img className="avatar" src={"/images/avatar.png"} alt="" />
-          <h1 style={{ margin: "0", paddingLeft: "20px" }}>
-            Hello, {nickname}
-          </h1>
+          <h2 className="hello">Hello, {nickname}</h2>
         </ProfileWrap>
         <Fab
           sx={{ color: "white", backgroundColor: "#F7B36A" }}
@@ -146,10 +144,10 @@ const Main: React.FC = () => {
         </ButtonWrap>
       </QuestionWrap>
       <AnswerWrap style={{ display: answered ? "flex" : "none" }}>
-        <h2 style={{ display: answeredRight ? "block" : "none" }}>
+        <h2 className="answer" style={{ display: answeredRight ? "block" : "none" }}>
           Yes, that's right! 👏
         </h2>
-        <h2 style={{ display: answeredRight ? "none" : "block" }}>
+        <h2 className="answer" style={{ display: answeredRight ? "none" : "block" }}>
           Wrong answer 😭
         </h2>
         <p className="question">{background}</p>
@@ -171,6 +169,11 @@ const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 700px) {
+    max-width: 100%;
+    min-width: 100%;
+    padding: 20px 10px;
+  }
 `;
 
 const ProfileWrap = styled.div`
@@ -180,14 +183,23 @@ const ProfileWrap = styled.div`
 
 const QuestionWrap = styled.div`
   border-radius: 50px;
-  height: 400px;
+  height: 500px;
   background-color: white;
   max-width: 80%;
   min-width: 80%;
   padding: 70px;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+  @media (max-width: 700px) {
+    max-width: 100%;
+    min-width: 100%;
+    padding: 20px;
+    height: 600px;
+  }
 `;
 
 const ButtonWrap = styled.div`
@@ -195,6 +207,12 @@ const ButtonWrap = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  @media (max-width: 700px) {
+    max-width: 90%;
+    min-width: 90%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
 `;
 
 const AnswerWrap = styled.div`
@@ -208,6 +226,10 @@ const AnswerWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media (max-width: 700px) {
+    padding: 20px;
+    height: 500px;
+  }
 `;
 
 export default Main;
