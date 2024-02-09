@@ -38,15 +38,20 @@ const WelcomeWrap = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
-  min-width: 80%;
-  max-width: 80%;
+  min-width: 60%;
+  max-width: 60%;
+  @media (max-width: 700px) {
+    min-width: 100%;
+    max-width: 100%;
+  }
 `;
 
 const Buttons = styled.div`
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-around;
-  @media only screen and (max-width: 700px) {
+  @media (max-width: 700px) {
     flex-wrap: wrap;
   }
 `;

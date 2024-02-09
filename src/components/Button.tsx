@@ -10,10 +10,10 @@ const CustomButton = (props: any) => {
 };
 
 const StyledButton = styled.button`
-  max-width: 70%;
-  min-width: 70%;
+  max-width: 40%;
+  min-width: 40%;
   box-sizing: border-box;
-  height: 60px;
+  height: 50px;
   color: #685bda;
   border-radius: 40px;
   border: none;
@@ -27,10 +27,10 @@ const StyledButton = styled.button`
     transition: 0.2s;
   }
   @media (max-width: 700px) {
-    max-width: 60%;
-    min-width: 60%;
+    max-width: 50%;
+    min-width: 50%;
     height: 50px;
-    margin: 10px;
+    margin: 20px;
   }
 `;
 

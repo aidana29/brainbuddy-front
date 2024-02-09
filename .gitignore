@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,node,react,macos
 
 .env 
+.build
 
 ### macOS ###
 # General

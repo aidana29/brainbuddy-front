@@ -5,6 +5,7 @@ import CustomContainer from "../components/PurpleContainer";
 import CenteredContainer from "../components/CenteredContainer";
 import InputField from "../components/Input";
 import EC2 from "../config";
+import styled from "styled-components";
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
@@ -62,8 +63,9 @@ const SignUp: React.FC = () => {
   return (
     <CustomContainer>
       <CenteredContainer>
+      <SignUpContainer>
         <div className="inputWrap" onChange={handleUserInfo}>
-          <h1 style={{ marginBottom: "50px" }}>Signing you Up!</h1>
+          <h1 style={{ marginBottom: "30px" }}>Signing you Up!</h1>
           <label className="signup">Email</label>
           <InputField
             type="text"
@@ -80,7 +82,7 @@ const SignUp: React.FC = () => {
           <InputField
             type="password"
             name="password"
-            placeholder="At least 3 characters, one letter and one number"
+            placeholder="Min 3 characters and 1 number"
           />
           <InputField
             type="password"
@@ -93,9 +95,16 @@ const SignUp: React.FC = () => {
             disabled={!isValidCheck}
           />
         </div>
+        </SignUpContainer>
       </CenteredContainer>
     </CustomContainer>
   );
 };
 
+const SignUpContainer = styled.div`
+width: 80%;
+@media (max-width: 700px) {
+  width: 100%;
+}
+`
 export default SignUp;

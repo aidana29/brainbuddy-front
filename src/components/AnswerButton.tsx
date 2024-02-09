@@ -15,13 +15,13 @@ const AnswerButton = (props: any) => {
 
 const StyledButton = styled.button`
   box-sizing: border-box;
-  min-height: 60px;
+  min-height: 50px;
   color: #685bda;
   border-radius: 20px;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
-  margin: 20px;
+  margin: 10px;
   padding: 0 30px;
   &:hover {
     background-color: #685ada;

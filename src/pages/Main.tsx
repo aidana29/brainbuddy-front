@@ -6,6 +6,7 @@ import CustomContainer from "../components/PurpleContainer";
 import Fab from "@mui/material/Fab";
 import LogoutIcon from "@mui/icons-material/Logout";
 import EC2 from "../config";
+import CenteredContainer from "../components/CenteredContainer";
 
 interface IQuestion {
   id: string;
@@ -116,6 +117,7 @@ const Main: React.FC = () => {
 
   return (
     <CustomContainer>
+      <CenteredContainer>
       <ProfileContainer>
         <ProfileWrap>
           <img className="avatar" src={"/images/avatar.png"} alt="" />
@@ -143,7 +145,7 @@ const Main: React.FC = () => {
           })}
         </ButtonWrap>
       </QuestionWrap>
-      <AnswerWrap style={{ display: answered ? "flex" : "none" }}>
+      <QuestionWrap style={{ display: answered ? "flex" : "none" }}>
         <h2 className="answer" style={{ display: answeredRight ? "block" : "none" }}>
           Yes, that's right! 👏
         </h2>
@@ -156,24 +158,19 @@ const Main: React.FC = () => {
           onClick={getQuestion}
           buttonText="Next Question"
         />
-      </AnswerWrap>
+      </QuestionWrap>
+      </CenteredContainer>
     </CustomContainer>
   );
 };
 
 const ProfileContainer = styled.div`
-  height: 100px;
-  max-width: 80%;
-  min-width: 80%;
-  padding: 50px;
+  max-width: 100%;
+  min-width: 100%;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media (max-width: 700px) {
-    max-width: 100%;
-    min-width: 100%;
-    padding: 20px 10px;
-  }
 `;
 
 const ProfileWrap = styled.div`
@@ -183,11 +180,11 @@ const ProfileWrap = styled.div`
 
 const QuestionWrap = styled.div`
   border-radius: 50px;
-  height: 500px;
+  max-width: 100%;
+  min-width: 100%;
+  height: 400px;
   background-color: white;
-  max-width: 80%;
-  min-width: 80%;
-  padding: 70px;
+  padding: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -195,10 +192,10 @@ const QuestionWrap = styled.div`
   box-sizing: border-box;
   text-align: center;
   @media (max-width: 700px) {
-    max-width: 100%;
-    min-width: 100%;
     padding: 20px;
-    height: 600px;
+    max-height: 600px;
+    min-height: 600px;
+    margin: 10px 0;
   }
 `;
 
@@ -212,23 +209,6 @@ const ButtonWrap = styled.div`
     min-width: 90%;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-  }
-`;
-
-const AnswerWrap = styled.div`
-  border-radius: 50px;
-  height: 400px;
-  background-color: white;
-  max-width: 80%;
-  min-width: 80%;
-  padding: 70px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  @media (max-width: 700px) {
-    padding: 20px;
-    height: 500px;
   }
 `;
 
